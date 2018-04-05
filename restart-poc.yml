@@ -1,0 +1,15 @@
+- name: Reset all network switches
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  tasks:
+  - name: Net Del All Configuration
+    nclu:
+        commit: true
+        description: "Deploy configuration"
+        commands:
+            - del all
+
+  - name: Reload Interfaces
+    command: ifreload -a
