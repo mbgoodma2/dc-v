@@ -1,0 +1,15 @@
+- name: Simple Debug Script
+  hosts: all
+  gather_facts: no
+  
+  tasks:
+   - debug:
+       msg: "{{ hostvars[inventory_hostname].loopback }}"
+
+   - debug:
+       msg: "{{ hostvars[inventory_hostname].uplinks }}"
+
+   - debug:
+       msg: "{{ item }}"
+      loop: "{{ hostvars[inventory_hostname].uplinks }}"
+ 
