@@ -1,0 +1,21 @@
+- name: Configure Simple BGP EVPN Automation
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  tasks:
+  - name: Deploy Simple BGP EVPN Automation Configuration
+    nclu:
+        commit: true
+        description: "Deploy configuration"
+        commands:
+            - add loopback lo ip address {{ hostvars[inventory_hostname].loopback }}/32
+            - add bgp autonomous-system {{ hostvars[inventory_hostname].bgpasn }}
+            - add bgp neighbor {{ hostvars[inventory_hostname].uplinks }} remote-as external
+            - add bgp network {{ hostvars[inventory_hostname].loopback }}/32
+            - add bgp bestpath as-path multipath-relax
+            - add bgp l2vpn evpn neighbor {{ hostvars[inventory_hostname].uplinks }} activate
+            - add bgp l2vpn evpn advertise-all-vni
+
+  - name: Reload Interfaces
+    command: ifreload -a
