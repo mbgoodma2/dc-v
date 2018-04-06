@@ -10,6 +10,6 @@
        msg: "{{ hostvars[inventory_hostname].uplinks }}"
 
    - debug:
-       msg: "{{ item }}"
-      loop: "{{ hostvars[inventory_hostname].uplinks }}"
+       msg: "Uplinks: {{ item }}"
+     with_items: "{{ hostvars[inventory_hostname].uplinks }}"
  
