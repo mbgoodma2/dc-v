@@ -4,6 +4,7 @@
   gather_facts: no
 
   tasks:
+
   - name: Deploy BGP and EVPN Address Familes
     nclu:
         commit: true
@@ -14,16 +15,13 @@
             - add bgp network {{ hostvars[inventory_hostname].loopback }}/32
             - add bgp bestpath as-path multipath-relax
             - add bgp l2vpn evpn advertise-all-vni
-
-  - name: Deploy BGP and EVPN capable uplinks
+  
+  - name: Deploy BGP and EVPN Interfaces
     nclu:
-       commit: true
-       description: "Deploy interfaces"
-       commands:
-            - add bgp neighbor swp"{{ item }}" remote-as external
-            - add bgp l2vpn evpn neighbor swp"{{ item }}" activate
-       with_items: "{{ hostvars[inventory_hostname].uplinks }}"
-  
-  
-  - name: Reload Interfaces
-    command: ifreload -a
+        commit: true
+        description: "Deploy interfaces"
+        commands:
+            - add bgp neighbor swp"{{ item.int_name }}" remote-as "{{ item.type }}"
+            - add bgp l2vpn evpn neighbor swp"{{ item.int_name }}" activate
+    with_items:
+      - "{{ hostvars[inventory_hostname].uplinks }}"

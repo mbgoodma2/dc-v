@@ -3,11 +3,11 @@
   gather_facts: no
   
   tasks:
-   - debug:
-       msg: "{{ hostvars[inventory_hostname].loopback }}"
+#   - debug:
+#       msg: "{{ hostvars[inventory_hostname].loopback }}"
 
-   - debug:
-       msg: "{{ hostvars[inventory_hostname].uplinks }}"
+#   - debug:
+#       msg: "{{ hostvars[inventory_hostname].uplinks }}"
 
    - debug:
        msg: "Uplinks: {{ item }}"
