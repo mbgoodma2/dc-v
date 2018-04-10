@@ -1,40 +1,91 @@
-graph dc1 {
- "itb-ce-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.10"]
- "itb-ce-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.11"]
- "asb-ce-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.20"]
- "asb-ce-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.21"]
- "cc-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.30"]
- "cc-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.31"]
- "r10-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.40"]
- "r10-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.41"]
- "dc-ce-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.50"]
- "dc-ce-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.51"]
- "itb-2206-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.60"]
- "itb-1108a-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.61"]
- "asb-126-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.70"]
-
-"itb-ce-a":"swp29" -- "itb-ce-b":"swp29"
-"itb-ce-a":"swp31" -- "cc-a":"swp9"
-"itb-ce-a":"swp32" -- "cc-b":"swp9"
-"itb-ce-b":"swp31" -- "cc-a":"swp11"
-"itb-ce-b":"swp32" -- "cc-b":"swp11"
-"asb-ce-a":"swp29" -- "asb-ce-b":"swp29"
-"asb-ce-a":"swp31" -- "cc-a":"swp13"
-"asb-ce-a":"swp32" -- "cc-b":"swp13"
-"asb-ce-b":"swp31" -- "cc-a":"swp15"
-"asb-ce-b":"swp32" -- "cc-b":"swp15"
-"dc-ce-a":"swp29" -- "dc-ce-b":"swp29"
-"dc-ce-a":"swp31" -- "cc-a":"swp17"
-"dc-ce-a":"swp32" -- "cc-b":"swp17"
-"dc-ce-b":"swp31" -- "cc-a":"swp19"
-"dc-ce-b":"swp32" -- "cc-b":"swp19"
-"cc-a":"swp29" -- "cc-b":"swp29"
-"dc-ce-a":"swp30" -- "r10-a":"swp54"
-"dc-ce-b":"swp30" -- "r10-b":"swp54"
-"itb-ce-a":"swp1" -- "itb-2206-b":"swp1"
-"itb-ce-b":"swp1" -- "itb-2206-b":"swp2"
-"itb-ce-a":"swp2" -- "itb-1108a-b":"swp1"
-"itb-ce-b":"swp2" -- "itb-1108a-b":"swp2"
-"asb-ce-a":"swp1" -- "asb-126-a":"swp1"
-"asb-ce-b":"swp1" -- "asb-126-a":"swp2"
-}
+all:
+    hosts:
+        192.168.200.10:
+            loopback: "10.33.110.254"
+            bgpasn: "65210"
+            hostname: "itb-ce-a"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.11:
+            loopback: "10.133.111.254"
+            bgpasn: "65211"
+            hostname: "itb-ce-b"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.20:
+            loopback: "10.33.108.254"
+            bgpasn: "65220"
+            hostname: "asb-ce-a"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }    
+        192.168.200.21:
+            loopback: "10.133.109.254"
+            bgpasn: "65221"
+            hostname: "asb-ce-b"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.30:
+            loopback: "10.33.106.254"
+            bgpasn: "65300"
+            hostname: "cc-a"
+            uplinks:
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 17, type: external }
+              - { int_name: 19, type: external }
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+        192.168.200.31:
+            loopback: "10.133.107.254"
+            bgpasn: "65300"
+            hostname: "cc-b"
+            uplinks:
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 17, type: external }
+              - { int_name: 19, type: external }
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+        192.168.200.40:
+            loopback: "10.33.112.254"
+            bgpasn: "65400"
+            hostname: "r10-a"
+            uplinks: 
+ #             - { int_name: 29, type: internal }
+              - { int_name: 54, type: external }
+        192.168.200.41:
+            loopback: "10.133.113.254"
+            bgpasn: "65400"
+            hostname: "r10-b"
+            uplinks:
+#              - { int_name: 29, type: internal }
+              - { int_name: 54, type: external }
+        192.168.200.50:
+            loopback: "10.133.113.254"
+            bgpasn: "65400"
+            hostname: "dc-ce-a"
+            uplinks:
+              - { int_name: 29, type: external }
+              - { int_name: 30, type: external }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.51:
+            loopback: "10.133.113.254"
+            bgpasn: "65400"
+            hostname: "dc-ce-b"
+            uplinks:
+              - { int_name: 29, type: external }
+              - { int_name: 30, type: external }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+    vars:
+        ansible_user: cumulus
+        ansible_password: CumulusLinux!
