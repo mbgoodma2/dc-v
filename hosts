@@ -37,23 +37,25 @@ all:
             bgpasn: "65300"
             hostname: "cc-a"
             uplinks:
+              - { int_name: 9, type: external }
+              - { int_name: 11, type: external }
               - { int_name: 13, type: external }
               - { int_name: 15, type: external }
               - { int_name: 17, type: external }
               - { int_name: 19, type: external }
               - { int_name: 29, type: internal }
-              - { int_name: 30, type: external }
         192.168.200.31:
             loopback: "10.133.107.254"
             bgpasn: "65300"
             hostname: "cc-b"
             uplinks:
+              - { int_name: 9, type: external }
+              - { int_name: 11, type: external }
               - { int_name: 13, type: external }
               - { int_name: 15, type: external }
               - { int_name: 17, type: external }
               - { int_name: 19, type: external }
               - { int_name: 29, type: internal }
-              - { int_name: 30, type: external }
         192.168.200.40:
             loopback: "10.33.112.254"
             bgpasn: "65400"
