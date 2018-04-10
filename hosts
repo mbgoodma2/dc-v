@@ -59,21 +59,21 @@ all:
             bgpasn: "65400"
             hostname: "r10-a"
             uplinks: 
- #             - { int_name: 29, type: internal }
+              - { int_name: 29, type: internal }
               - { int_name: 54, type: external }
         192.168.200.41:
             loopback: "10.133.113.254"
             bgpasn: "65400"
             hostname: "r10-b"
             uplinks:
-#              - { int_name: 29, type: internal }
+              - { int_name: 29, type: internal }
               - { int_name: 54, type: external }
         192.168.200.50:
             loopback: "10.33.114.254"
             bgpasn: "65400"
             hostname: "dc-ce-a"
             uplinks:
-              - { int_name: 29, type: external }
+              - { int_name: 29, type: internal }
               - { int_name: 30, type: external }
               - { int_name: 31, type: external }
               - { int_name: 32, type: external }
@@ -82,7 +82,7 @@ all:
             bgpasn: "65400"
             hostname: "dc-ce-b"
             uplinks:
-              - { int_name: 29, type: external }
+              - { int_name: 29, type: internal }
               - { int_name: 30, type: external }
               - { int_name: 31, type: external }
               - { int_name: 32, type: external }
