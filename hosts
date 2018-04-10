@@ -33,8 +33,6 @@ all:
 #              - { int_name: 31, type: external }
 #              - { int_name: 32, type: external }
         10.5.39.12:
-            ansible_ssh_user: cumulus
-            ansible_ssh_pass: CumulusLinux!
             loopback: "10.33.106.254"
             bgpasn: "65300"
             hostname: "cc-a"
@@ -90,6 +88,6 @@ all:
 #              - { int_name: 30, type: external }
 #              - { int_name: 31, type: external }
 #              - { int_name: 32, type: external }
-#vars:
-#ansible_user: "cumulus"
-#ansible_ssh_pass: "CumulusLinux!"
+   vars:
+     ansible_user: cumulus
+     ansible_ssh_pass: CumulusLinux!
