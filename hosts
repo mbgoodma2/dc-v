@@ -88,6 +88,6 @@ all:
 #              - { int_name: 30, type: external }
 #              - { int_name: 31, type: external }
 #              - { int_name: 32, type: external }
-   vars:
-     ansible_user: cumulus
-     ansible_ssh_pass: CumulusLinux!
+#   vars:
+#     ansible_user: cumulus
+#     ansible_ssh_pass: CumulusLinux!
