@@ -1,0 +1,8 @@
+graph dc1 {
+ "education-sw1" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.10"]
+ "education-sw2" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.5.3" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="192.168.200.20"]
+
+"education-sw1":"swp47" -- "education-sw2":"swp47"
+"education-sw1":"swp48" -- "education-sw2":"swp48"
+
+}

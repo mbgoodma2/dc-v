@@ -1,0 +1,24 @@
+---
+- hosts: leafs
+  become: yes
+  roles:
+    - ifupdown2-l2
+    - ntp
+    - netq
+    - stp
+
+- hosts: spines
+  become: yes
+  roles:
+    - ifupdown2-l2
+    - ntp
+    - netq
+    - stp
+
+- hosts: servers
+  become: yes
+  roles:
+    - ifupdown-l2
+    - ntp
+    - netq
+    - ping

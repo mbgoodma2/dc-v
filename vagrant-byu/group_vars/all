@@ -1,0 +1,68 @@
+# networking
+netq_ts: "192.168.200.1"
+nodes:
+    leaf01:
+        stp_port: swp51
+        interfaces:
+            loopback: "10.0.0.11"
+            mgmt:
+                eth0:
+                    vrf: "vrf mgmt"
+            bridge:
+                - swp1
+                - swp2
+                - swp51
+                - swp52
+    leaf02:
+        interfaces:
+            loopback: "10.0.0.12"
+            mgmt:
+                    eth0:
+                        vrf: "vrf mgmt"
+            bridge:
+                    - swp1
+                    - swp2
+                    - swp51
+                    - swp52
+    spine01:
+        stp_port: swp1
+        interfaces:
+            loopback: "10.0.0.21"
+            mgmt:
+                eth0:
+                    vrf: "vrf mgmt"
+            bridge:
+                - swp1
+                - swp2
+    spine02:
+        interfaces:
+            loopback: "10.0.0.22"
+            mgmt:
+                eth0:
+                    vrf: "vrf mgmt"
+            bridge:
+                - swp1
+                - swp2
+    server01:
+        interfaces:
+            loopback: "10.0.0.1"
+            physical:
+                eth1:
+                eth2:
+            bridge:
+                ipv4: "192.168.1.1"
+            mgmt:
+                eth0:
+                    vrf: ""
+    server02:
+        interfaces:
+            loopback: "10.0.0.2"
+            physical:
+                eth1:
+                eth2:
+            bridge:
+                ipv4: "192.168.1.2"
+            mgmt:
+                eth0:
+                    vrf: ""
+

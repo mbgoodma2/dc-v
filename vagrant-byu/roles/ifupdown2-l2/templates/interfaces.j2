@@ -1,0 +1,32 @@
+# /etc/network/interfaces template for switches ({{ansible_hostname}})
+# Created by Ansible
+
+auto lo
+iface lo inet loopback
+  address {{ nodes[ansible_hostname]["interfaces"]["loopback"] }}/32
+
+auto eth0
+iface eth0 inet dhcp
+    alias management interface
+    vrf mgmt
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    vrf-table auto
+
+{% for interface in nodes[ansible_hostname]["interfaces"]["bridge"] %}
+auto {{ interface }}
+iface {{ interface }}
+
+{% endfor %}
+
+auto bridge
+iface bridge
+    bridge-ports {% for interface in nodes[ansible_hostname]["interfaces"]["bridge"] %}{{interface}} {% endfor %}
+    
+    bridge-vlan-aware yes
+    {% if ansible_hostname == "spine02" %}
+    mstpctl-treeprio 4096
+    {% endif %}
+
