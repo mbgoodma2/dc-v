@@ -1,0 +1,62 @@
+all:
+    hosts:
+        192.168.200.10:
+            loopback: "10.33.110.254"
+            bgpasn: "65210"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.11:
+            loopback: "10.133.111.254"
+            bgpasn: "65211"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.20:
+            loopback: "10.33.108.254"
+            bgpasn: "65220"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }    
+        192.168.200.21:
+            loopback: "10.133.109.254"
+            bgpasn: "65221"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        192.168.200.30:
+            loopback: "10.33.106.254"
+            bgpasn: "65300"
+            uplinks:
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+        192.168.200.31:
+            loopback: "10.133.107.254"
+            bgpasn: "65300"
+            uplinks:
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+        192.168.200.40:
+            loopback: "10.33.112.254"
+            bgpasn: "65400"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 54, type: external }
+        192.168.200.41:
+            loopback: "10.133.113.254"
+            bgpasn: "65400"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 54, type: external }
+
+    vars:
+        ansible_user: cumulus
+        ansible_password: CumulusLinux!
