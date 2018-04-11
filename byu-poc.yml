@@ -5,6 +5,7 @@
   
   - set_fact:
        poc-switch: {{ hostvars[inventory_hostname] }}
+  
   tasks:
   
   - name: Deploy BGP and EVPN Address Familes

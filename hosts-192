@@ -1,13 +1,13 @@
 all:
     hosts:
-#        192.168.200.10:
-#            loopback: "10.33.110.254"
-#            bgpasn: "65210"
-#            hostname: "itb-ce-a"
-#            uplinks: 
-#              - { int_name: 29, type: internal }
-#              - { int_name: 31, type: external }
-#              - { int_name: 32, type: external }
+        192.168.200.10:
+            loopback: "10.33.110.254"
+            bgpasn: "65210"
+            hostname: "itb-ce-a"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
 #        192.168.200.11:
 #            loopback: "10.133.111.254"
 #            bgpasn: "65211"
@@ -79,15 +79,16 @@ all:
 #              - { int_name: 30, type: external }
 #              - { int_name: 31, type: external }
 #              - { int_name: 32, type: external }
-        192.168.200.51:
-            loopback: "10.33.115.254"
-            bgpasn: "65400"
-            hostname: "dc-ce-b"
-            uplinks:
-              - { int_name: 29, type: internal }
-              - { int_name: 30, type: external }
-              - { int_name: 31, type: external }
-              - { int_name: 32, type: external }
+#        192.168.200.51:
+#            loopback: "10.33.115.254"
+#            bgpasn: "65400"
+#            hostname: "dc-ce-b"
+#            uplinks:
+#              - { int_name: 29, type: internal }
+#              - { int_name: 30, type: external }
+#              - { int_name: 31, type: external }
+#              - { int_name: 32, type: external }
     vars:
-        ansible_user: cumulus
-        ansible_password: CumulusLinux!
+        ansible_user=cumulus
+        ansible_ssh_pass=CumulusLinux!
+        ansible_become_pass=CumulusLinux!
