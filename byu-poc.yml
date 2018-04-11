@@ -4,11 +4,6 @@
   gather_facts: no
   remote_user: cumulus
 
-  vars:
-     ansible_user=cumulus
-     ansible_ssh_pass=CumulusLinux!
-     ansible_become_pass=CumulusLinux!
-
   tasks:
   
   - set_fact:
