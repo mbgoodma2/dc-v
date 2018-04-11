@@ -15,7 +15,7 @@
         commands:
             - add loopback lo ip address {{ poc_switch.loopback }}/32
             - add bgp autonomous-system {{ poc_switch.bgpasn }}
-            - add bgp network {{ hpoc_switch.loopback }}/32
+            - add bgp network {{ poc_switch.loopback }}/32
             - add bgp bestpath as-path multipath-relax
             - add bgp l2vpn evpn advertise-all-vni
             - add hostname {{ poc_switch.hostname }}
