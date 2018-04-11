@@ -43,5 +43,5 @@
   - name: Reload Interfaces
     command: ifreload -a
 
-  - debug:
-      msg: "Anycast IP is {{ poc_switch.vxlan_anycast_ip }}"
+#  - debug:
+#      msg: "Anycast IP is {{ poc_switch.vxlan_anycast_ip }}"
