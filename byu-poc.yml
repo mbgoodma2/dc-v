@@ -13,9 +13,9 @@
         commit: true
         description: "Deploy configuration"
         commands:
-            - add loopback lo ip address {{ hostvars[inventory_hostname].loopback }}/32
-            - add bgp autonomous-system {{ hostvars[inventory_hostname].bgpasn }}
-            - add bgp network {{ hostvars[inventory_hostname].loopback }}/32
+            - add loopback lo ip address {{ poc_switch.loopback }}/32
+            - add bgp autonomous-system {{ poc_switch.bgpasn }}
+            - add bgp network {{ hpoc_switch.loopback }}/32
             - add bgp bestpath as-path multipath-relax
             - add bgp l2vpn evpn advertise-all-vni
             - add hostname {{ poc_switch.hostname }}
@@ -28,7 +28,7 @@
             - add bgp neighbor swp"{{ item.int_name }}" remote-as "{{ item.type }}"
             - add bgp l2vpn evpn neighbor swp"{{ item.int_name }}" activate
     with_items:
-      - "{{ hostvars[inventory_hostname].uplinks }}"
+      - "{{ poc_switch.uplinks }}"
   
   - name: Reload Interfaces
     command: ifreload -a
