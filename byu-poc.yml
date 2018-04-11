@@ -14,6 +14,7 @@
         description: "Deploy configuration"
         commands:
             - add loopback lo ip address {{ poc_switch.loopback }}/32
+            - add interface eth0 vrf mgmt
             - add bgp autonomous-system {{ poc_switch.bgpasn }}
             - add bgp network {{ poc_switch.loopback }}/32
             - add bgp bestpath as-path multipath-relax
