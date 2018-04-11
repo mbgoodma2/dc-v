@@ -10,7 +10,7 @@ all:
               - { int_name: 32, type: external }
             clag_info:
                vxlan_anycast_ip: "192.168.1.100"
-               address: "169.254.1.2"
+               address: "169.254.1.2/30"
                clagd_backup_ip: "10.133.111.254"
                clagd_peer_ip: "169.254.1.1"
                clagd_priority: "200"
