@@ -3,11 +3,11 @@
   become: yes
   gather_facts: no
   
-  - set_fact:
-       poc-switch: {{ hostvars[inventory_hostname] }}
-  
   tasks:
   
+  - set_fact:
+       poc-switch: {{ hostvars[inventory_hostname] }}
+       
   - name: Deploy BGP and EVPN Address Familes
     nclu:
         commit: true
