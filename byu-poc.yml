@@ -44,4 +44,4 @@
     command: ifreload -a
 
   - name: debug
-        msg: Anycast IP is {{ poc_switch.vxlan_anycast_ip }}
+        msg: "Anycast IP is {{ poc_switch.vxlan_anycast_ip }}"
