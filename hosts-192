@@ -90,5 +90,5 @@ all:
 #              - { int_name: 32, type: external }
     vars:
         ansible_user=cumulus
-        ansible_ssh_pass=CumulusLinux!
+        ansible_pass=CumulusLinux!
         ansible_become_pass=CumulusLinux!
