@@ -6,8 +6,8 @@
   tasks:
   
   - set_fact:
-       poc-switch: {{ hostvars[inventory_hostname] }}
-       
+       poc-switch: "{{ hostvars[inventory_hostname] }}"
+
   - name: Deploy BGP and EVPN Address Familes
     nclu:
         commit: true
