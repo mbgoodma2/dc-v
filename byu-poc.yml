@@ -40,7 +40,7 @@
              add loopback lo clag vxlan-anycast-ip {{ poc_switch.clag_info.vxlan_anycast_ip }}
              add interface peerlink.4094 ip address {{ poc_switch.clag_info.address }}
              add interface peerlink.4094 clag peer-ip {{ poc_switch.clag_info.clagd_peer_ip }}
-             add interface peerlink.4094 clag backup-ip {{ poc_switch.clag_info.clagd_backup_ip }}
+             add interface peerlink.4094 clag backup-ip {{ poc_switch.clag_info.clagd_backup_ip }}/30
              add interface peerlink.4094 clag sys-mac {{ poc_switch.clag_info.clagd_sys_mac }}
              add interface peerlink.4094 clag priority {{ poc_switch.clag_info.clagd_priority }}
            {% endif %}
