@@ -8,6 +8,7 @@ all:
               - { int_name: 29, type: internal }
               - { int_name: 31, type: external }
               - { int_name: 32, type: external }
+            vxlan-anycast-ip: "192.168.1.100"
 #        192.168.200.11:
 #            loopback: "10.133.111.254"
 #            bgpasn: "65211"
@@ -27,7 +28,7 @@ all:
 #        192.168.200.21:
 #            loopback: "10.133.109.254"
 #            bgpasn: "65221"
-#           hostname: "asb-ce-b"
+#            hostname: "asb-ce-b"
 #            uplinks:
 #              - { int_name: 29, type: internal }
 #              - { int_name: 31, type: external }

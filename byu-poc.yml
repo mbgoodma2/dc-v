@@ -11,7 +11,7 @@
   - name: Deploy BGP and EVPN Address Familes
     nclu:
         commit: true
-        description: "Deploy configuration"
+        description: "Deploy BGP and EVPN Address Familes"
         commands:
             - add loopback lo ip address {{ poc_switch.loopback }}/32
             - add interface eth0 vrf mgmt
@@ -24,12 +24,21 @@
   - name: Deploy BGP and EVPN Interfaces
     nclu:
         commit: true
-        description: "Deploy interfaces"
+        description: "Deploy BGP and EVPN Interfaces"
         commands:
             - add bgp neighbor swp"{{ item.int_name }}" remote-as "{{ item.type }}"
             - add bgp l2vpn evpn neighbor swp"{{ item.int_name }}" activate
     with_items:
       - "{{ poc_switch.uplinks }}"
-  
+
+  - name: Deploy MLAG Interfaces
+    nclu:
+        commit: true
+        description: "Deploy MLAG Interfaces"
+        template: |
+        {% if interfaces.loopback.vxlan_anycast_ip is defined %}
+          add loopback lo clag vxlan-anycast-ip {{ poc_switch.vxlan-anycast-ip }}
+        {% endif %}
+
   - name: Reload Interfaces
     command: ifreload -a
