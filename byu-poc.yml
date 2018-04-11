@@ -6,7 +6,7 @@
   tasks:
   
   - set_fact:
-       poc-switch: "{{ hostvars[inventory_hostname] }}"
+       poc_switch: "{{ hostvars[inventory_hostname] }}"
 
   - name: Deploy BGP and EVPN Address Familes
     nclu:
@@ -18,7 +18,7 @@
             - add bgp network {{ hostvars[inventory_hostname].loopback }}/32
             - add bgp bestpath as-path multipath-relax
             - add bgp l2vpn evpn advertise-all-vni
-            - add hostname {{ poc-switch.hostname }}
+            - add hostname {{ poc_switch.hostname }}
   
   - name: Deploy BGP and EVPN Interfaces
     nclu:
