@@ -36,9 +36,9 @@
         commit: true
         description: "Deploy MLAG Interfaces"
         template: |
-        {% if interfaces.loopback.vxlan_anycast_ip is defined %}
-          add loopback lo clag vxlan-anycast-ip {{ poc_switch.vxlan-anycast-ip }}
-        {% endif %}
+           {% if interfaces.loopback.vxlan_anycast_ip is defined %}
+             add loopback lo clag vxlan-anycast-ip {{ poc_switch.vxlan-anycast-ip }}
+           {% endif %}
 
   - name: Reload Interfaces
     command: ifreload -a
