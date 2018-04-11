@@ -1,0 +1,93 @@
+all:
+    hosts:
+        10.5.39.16:
+            loopback: "10.33.110.254"
+            bgpasn: "65210"
+            hostname: "itb-ce-a"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        10.5.39.17:
+            loopback: "10.133.111.254"
+            bgpasn: "65211"
+            hostname: "itb-ce-b"
+            uplinks: 
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        10.5.39.14:
+            loopback: "10.33.108.254"
+            bgpasn: "65220"
+            hostname: "asb-ce-a"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }    
+        10.5.39.15:
+            loopback: "10.133.109.254"
+            bgpasn: "65221"
+            hostname: "asb-ce-b"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        10.5.39.12:
+            loopback: "10.33.106.254"
+            bgpasn: "65300"
+            hostname: "cc-a"
+            uplinks:
+              - { int_name: 9, type: external }
+              - { int_name: 11, type: external }
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 17, type: external }
+              - { int_name: 19, type: external }
+              - { int_name: 29, type: internal }
+        10.5.39.13:
+            loopback: "10.133.107.254"
+            bgpasn: "65300"
+            hostname: "cc-b"
+            uplinks:
+              - { int_name: 9, type: external }
+              - { int_name: 11, type: external }
+              - { int_name: 13, type: external }
+              - { int_name: 15, type: external }
+              - { int_name: 17, type: external }
+              - { int_name: 19, type: external }
+              - { int_name: 29, type: internal }
+#        10.5.39.1x:
+#            loopback: "10.33.112.254"
+#            bgpasn: "65400"
+#            hostname: "r10-a"
+#            uplinks: 
+#              - { int_name: 29, type: internal }
+#              - { int_name: 54, type: external }
+#        10.5.39.1x:
+#            loopback: "10.133.113.254"
+#            bgpasn: "65400"
+#            hostname: "r10-b"
+#            uplinks:
+#              - { int_name: 29, type: internal }
+#              - { int_name: 54, type: external }
+        10.5.39.19:
+            loopback: "10.33.114.254"
+            bgpasn: "65400"
+            hostname: "dc-ce-a"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+        10.5.39.18:
+            loopback: "10.33.115.254"
+            bgpasn: "65400"
+            hostname: "dc-ce-b"
+            uplinks:
+              - { int_name: 29, type: internal }
+              - { int_name: 30, type: external }
+              - { int_name: 31, type: external }
+              - { int_name: 32, type: external }
+#   vars:
+#     ansible_user: cumulus
+#     ansible_ssh_pass: CumulusLinux!
