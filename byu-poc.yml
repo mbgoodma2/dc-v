@@ -31,6 +31,17 @@
     with_items:
       - "{{ poc_switch.uplinks }}"
 
+  - name: Deploy Bond Interfaces
+    nclu:
+        commit: true
+        description: "Deploy Bond Interfaces"
+        template: |
+           {% if poc_switch.clag_info.peerlink_bonds is defined %}
+             add bond peerlink bond slaves swp"{{ item.int_name }}"
+           {% endif %}
+    with_items:
+      - "{{ poc_switch.clag_info.peerlink_bonds}}"
+
   - name: Deploy MLAG Anycast Interfaces
     nclu:
         commit: true
@@ -44,6 +55,7 @@
              add interface peerlink.4094 clag sys-mac {{ poc_switch.clag_info.clagd_sys_mac }}
              add interface peerlink.4094 clag priority {{ poc_switch.clag_info.clagd_priority }}
            {% endif %}
+
 
   - name: Reload Interfaces
     command: ifreload -a
